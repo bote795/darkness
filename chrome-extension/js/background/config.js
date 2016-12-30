@@ -223,6 +223,17 @@ var CONFIG = {
 			],
 			topContributors: [ // Top 3 contributors of fixes & improvements, excluding the creator
 			]
+		},
+		'animefreak': {
+			key: 'animefreak', // Must be the same as the object key
+			name: 'Animefreak',
+			support: 'in-development',
+			hostRegExp: new RegExp('^www\.animefreak\.tv', 'i'),
+			creators: [ // Who wrote the 80%+ of the skin?
+				{name: 'Nicolas Botello', link: 'http://nicolasbotello.com/'}
+			],
+			topContributors: [ // Top 3 contributors of fixes & improvements, excluding the creator
+			]
 		}
 	}
 };
