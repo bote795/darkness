@@ -172,7 +172,9 @@ if (!DarknessSettingsLoader) {
 			$('#drk_paypal_button_id').attr('value', paypalButtonId);
 
 			// Add custom data to each PayPal transaction
-			var transactionId = Math.random().toString(36).slice(2, 12);
+			var now = new Date();
+			var transactionId = 'tid_' + now.getFullYear() + '_' + ('0'+(now.getMonth()+1)).slice(-2) + '_' + now.getDate();
+			if (ENVIRONMENT != 'production') transactionId += '_n' + Math.floor(Math.random()*10000);
 			var custom = { dialog_reason: dialogReason, theme: THEME, site: SITE, machine_id: MACHINE_ID, transaction_id: transactionId };
 			$('#drk_paypal_custom').attr('value', JSON.stringify(custom));
 
@@ -266,8 +268,9 @@ if (!DarknessSettingsLoader) {
 
 		// Payment Step 3 (alternative): Called when a user submits a promo code
 		var submitPromoCode = function() {
-			var promo = $('.drk_promo_input').val().trim();
-			$('.drk_promo_submit').val('Checking...');
+			var $dialog = $('.drk_get_pro.sku-'+SKU)
+			var promo = $dialog.find('.drk_promo_input').val().trim();			
+			$dialog.find('.drk_promo_submit').val('Checking...');
 			// Ask the background to check with the code with the server
 			chrome.runtime.sendMessage({ action: "checkPromoCode", promo: promo }, function(res) {
 				if (res.success) {
@@ -278,12 +281,18 @@ if (!DarknessSettingsLoader) {
 						notifyUserOnPaymentFinished(true);
 					});
 				} else {
-					// Notify the user code is wrong
-					$('.drk_promo_submit').val('Invalid code');
-					$('.drk_promo_input').val('');
-					setTimeout(function() {
-						$('.drk_promo_submit').val('Send');
-					}, 2500);
+					if (res.error == 'PROMO-INCORRECT') {
+						// Notify the user code is wrong
+						$dialog.find('.drk_promo_submit').val('Not found');
+						$dialog.find('.drk_promo_input').val('');
+						setTimeout(function() {
+							$dialog.find('.drk_promo_submit').val('Send');
+						}, 2500);
+					} else {
+						$dialog.find('.drk_promo_submit').val('Send');
+						var msg = "Error sending promo to server:\n\n" + res.error + "\n\nPlease copy this message and send it to darkness@improvver.com";
+						alert(msg);
+					}
 				}
 			});
 		};
@@ -491,12 +500,18 @@ if (!DarknessSettingsLoader) {
 			else if (ENVIRONMENT == 'production') title = 'Darkness' + (ASSETS.TYPE == 'p' ? ' Pro' : '');
 			$('.drk_app_name').html(title);
 			$('.drk_settings .sku_replace').addClass('sku-'+SKU).removeClass('sku_replace');
-			if (ASSETS.TYPE == 'p') {
-				// Adjustments for Pro mode
-				$('.drk_upgrade_btn').remove();
-				$('.drk_vote_btn').addClass('hidden');
-			} else {
-				$('.drk_rate_btn').addClass('hidden');
+			if (ENVIRONMENT == 'development')  { 
+				// Darkness Development Edition users:
+				$('.drk_upgrade_btn').remove(); // Hide upgrade button
+				$('.drk_cross_promo_btn').addClass('hidden'); // Hide cross promotion
+				$('.drk_rate_btn').addClass('hidden'); // Hide rate on CWS
+			}
+			else if (ASSETS.TYPE == 'p') { 
+				// Pro users:
+				$('.drk_upgrade_btn').remove(); // Hide upgrade button
+			} else { 
+				// Regular users
+				$('.drk_rate_btn').addClass('hidden'); // Hide rate on CWS
 			}
 
 			// Fill website name, etc.
@@ -655,6 +670,14 @@ if (!DarknessSettingsLoader) {
 			$('.drk_settings .drk_rate_btn').unbind('click').click(function() {
 				repEventByUser('user-action', 'rate-btn-click');
 				var url = 'https://goo.gl/oMLASO';
+				var win = window.open(url, '_blank');
+				win.focus();
+			});
+
+			// Cross promotion button
+			$('.drk_settings .drk_cross_promo_btn').unbind('click').click(function() {
+				repEventByUser('user-action', 'cross-promo-btn-click');
+				var url = 'https://goo.gl/Natio5';
 				var win = window.open(url, '_blank');
 				win.focus();
 			});

@@ -7,7 +7,7 @@ var ENVIRONMENT = 'development';
 if (chrome.runtime.id == 'imilbobhamcfahccagbncamhpnbkaenm') ENVIRONMENT = 'production'; // Chrome Web Store version
 
 // Local testing versions
-if (chrome.runtime.id == 'koobfbhnpdijhobcdllfkmlgngbpgjep') ENVIRONMENT = 'staging'; // Local version (development)
+if (chrome.runtime.id == 'koobfbhnpdijhobcdllfkmlgngbpgjep') ENVIRONMENT = 'development'; // Local version (development)
 if (chrome.runtime.id == 'blbbhmfjigkmkkobabbgppbhaaeehfjn') ENVIRONMENT = 'staging'; // Local testing version before deploying (staging)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,14 +70,15 @@ var sendHttpPostRequest = function(url, params, callback) {
 				try {
 					var resp = JSON.parse(xhr.responseText);
 				} catch (e) {
-					callback("Error parsing response as JSON: ", e, "\nResponse is: " + xhr.responseText);
+					callback("Error parsing response as JSON: " + e.toString() + "\nResponse is: " + xhr.responseText.toString());
 				}
 				if (resp) callback(null, resp);
 			} else {
-				callback(xhr.status + " | " + xhr.statusText + " | " + xhr.responseText);
+				callback("Status " + xhr.status + ", Text: " + xhr.statusText + ", Response: " + xhr.responseText);
 			}
 		}
 	};
+	
 	xhr.send(paramsString);
 };
 

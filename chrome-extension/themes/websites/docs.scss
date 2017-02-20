@@ -36,8 +36,11 @@ iframe {
 }
 
 // Icons
-.docs-icon, .docs-homescreen-icon {
+.docs-icon, .docs-homescreen-icon, .docs-icon-img {
 	-webkit-filter: invert(1) !important;
+}
+.docs-icon-text-color, .docs-icon-fill-color, .docs-icon-spreadsheet, .docs-icon-excel {
+	-webkit-filter: invert(0) !important;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -57,6 +60,11 @@ iframe {
 // Google logo in left menu
 .gb_sd.gb_Vb {
 	-webkit-filter: invert(1) !important;
+}
+
+// "Docs" in the toolbar logo
+.gb_Sb .gb_td {
+	color: white !important;
 }
 // Undo color-change in menu on some icons
 .docs-homescreen-nav-settings-24, .docs-homescreen-nav-help-24 {
@@ -92,6 +100,9 @@ iframe {
 .gb_3, .gb_M {
 	-webkit-filter: invert(100%) !important;
 }
+.goog-palette-cell {
+	-webkit-filter: invert(100%) !important;
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Docs
@@ -114,6 +125,19 @@ iframe {
 }
 .docs-explore-icon path{
 	fill: invert-back-color($theme-url) !important;
+}
+
+// The cursor
+.kix-cursor {
+	-webkit-filter: invert(1) !important;
+}
+
+// Colab
+.docs-presence-plus-collab-widget-color-block {
+	-webkit-filter: invert(1) !important;
+}
+.docs-presence-plus-collab-widget-color-block > div {
+	-webkit-filter: invert(1) !important;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

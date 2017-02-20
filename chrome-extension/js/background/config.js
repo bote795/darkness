@@ -5,6 +5,7 @@
 var GOOGLE_HOST_REGEXP = '^(www|encrypted)\.google\.(com|[a-z][a-z]|co\.[a-z][a-z]|com\.[a-z][a-z])$';
 
 var CONFIG = {
+	appName: 'darkness',
 	defaultTheme: 'iceberg',
 
 	// List of Darkness themes
@@ -62,7 +63,8 @@ var CONFIG = {
 				{ name: 'Nicolas Botello', link: 'http://nicolasbotello.com/' }
 			],
 			topContributors: [ // Top 3 contributors of fixes & improvements, excluding the creator
-				{ name: 'Lior Grossman', link: 'http://liorgrossman.com' }
+				{ name: 'Lior Grossman', link: 'http://liorgrossman.com' },
+				{ name: 'Theis Villumsen', link: 'https://folkmann.it/' }
 			]
 		},
 		'gmail': {
@@ -93,8 +95,19 @@ var CONFIG = {
 		'docs': {
 			key: 'docs', // Must be the same as the object key
 			name: 'Google Docs',
-			support: 'in-development',
+			support: 'full',
 			hostRegExp: new RegExp('^docs\.google\.com$', 'i'),
+			creators: [ // Who wrote the 80%+ of the skin?
+				{ name: 'Theis Villumsen', link: 'https://folkmann.it/' }
+			],
+			topContributors: [ // Top 3 contributors of fixes & improvements, excluding the creator
+			]
+		},
+		'twitch': {
+			key: 'twitch', // Must be the same as the object key
+			name: 'Twitch',
+			support: 'in-development',
+			hostRegExp: new RegExp('^www\.twitch\.tv$', 'i'),
 			creators: [ // Who wrote the 80%+ of the skin?
 				{ name: 'Theis Villumsen', link: 'https://folkmann.it/' }
 			],
@@ -138,6 +151,18 @@ var CONFIG = {
 			topContributors: [ // Top 3 contributors of fixes & improvements, excluding the creator
 				{ name: 'Lior Grossman', link: 'http://liorgrossman.com' }
 			]
+		},
+		'bitbucket': {
+			key: 'bitbucket', // Must be the same as the object key
+			name: 'Bitbucket',
+			support: 'ask-developers',
+			hostRegExp: new RegExp('^bitbucket\.org$', 'i')
+		},
+		'gitlab': {
+			key: 'gitlab', // Must be the same as the object key
+			name: 'GitLab',
+			support: 'ask-developers',
+			hostRegExp: new RegExp('^gitlab\.com$', 'i')
 		},
 		'sharelatex': {
 			key: 'sharelatex', // Must be the same as the object key
@@ -199,8 +224,14 @@ var CONFIG = {
 		'trello': {
 			key: 'trello', // Must be the same as the object key
 			name: 'Trello',
-			support: 'ask-developers', // Show a call to action for developers to join our community (don't show it in dev mode)
-			hostRegExp: new RegExp('^trello\.com$', 'i')
+			support: 'full', // Show a call to action for developers to join our community (don't show it in dev mode)
+			hostRegExp: new RegExp('^trello\.com$', 'i'),
+			creators: [ // Who wrote the 80%+ of the skin?
+				{ name: 'Theis Villumsen', link: 'https://folkmann.it/' }
+			],
+			topContributors: [ // Top 3 contributors of fixes & improvements, excluding the creator
+				{ name: 'John Evans', link: 'https://github.com/jhevans' }
+			]
 		},
 		'dropbox': {
 			key: 'dropbox', // Must be the same as the object key

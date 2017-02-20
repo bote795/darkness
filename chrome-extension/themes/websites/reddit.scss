@@ -21,10 +21,15 @@ input {
 // Toolbar
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-// Toolbar background
-#header-bottom-left {
-	background: $theme-background !important;
+// Background banner
+#header[role="banner"] {
+	-webkit-filter: invert(1) !important;
 }
+#header[role="banner"] > div{
+	-webkit-filter: invert(1) !important;
+}
+
+// Toolbar background
 #header-bottom-left > a:nth-child(2){
 	-webkit-filter: invert(100%) !important;
 }
@@ -74,4 +79,13 @@ input {
 
 body {
 	background-color: $theme-background !important;
+}
+
+// Right sidebar
+.side .submit {
+	-webkit-filter: invert(1) !important;
+}
+.side a {
+	-webkit-filter: invert(1) !important;
+	color: invert-back-color($theme-link) !important;
 }

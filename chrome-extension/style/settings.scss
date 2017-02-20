@@ -154,7 +154,7 @@ div.drk_button {
 		display: inline-block !important;
 	}
 	&.drk_bold {
-		color: lighten($darkness-button-text, 5%) !important;
+		color: lighten($darkness-button-text, 11%) !important;
 	}
 	&.drk_active {
 		background: $darkness-button-active-background !important;
@@ -628,7 +628,7 @@ div.drk_dialog.drk_get_pro.sku-2 {
 		background: Transparent url("chrome-extension://__MSG_@@extension_id__/images/upgrade-dialog-2.png") no-repeat center !important;
 	}
 	.drk_button_dialog {
-		background: linear-gradient(180deg, #cf0010 30%, #87000a) !important;
+		background: linear-gradient(180deg, #cf0010 30%, #87000a 110%) !important;
 		.upg_btn1 {
 			font-weight: 600 !important;
     		letter-spacing: -1px !important;
@@ -637,15 +637,15 @@ div.drk_dialog.drk_get_pro.sku-2 {
 			color: #e5adae !important;
 		}
 		&:hover {
-			background: linear-gradient(180deg, #cf0010 30%, #87000a) !important;
+			background: linear-gradient(180deg, #cf0010 30%, #87000a 110%) !important;
 		}
 	}
 
 	.drk_promo_link, .drk_promo_caption, .drk_hide_link {
-		color: rgba(255, 255, 255, 0.25) !important
+		color: #60a5e0 !important;
 	}
 	.drk_promo_link:hover, .drk_promo_caption:hover, .drk_hide_link:hover {
-		color: rgba(255, 255, 255, 0.35) !important
+		color: #70b0ff !important;
 	}
 
 }
@@ -770,12 +770,13 @@ div.drk_dialog.drk_get_pro {
 	}
 
 	.drk_promo_caption {
-		bottom: 53px !important;
+		bottom: 56px !important;
 		right: 15px !important;
 		width: 120px !important;
 		text-align: center !important;
 		color: #459078 !important;
 		font-size: 12px !important;
+		line-height: 1.3em !important;
 	}
 
 	.drk_promo_input {

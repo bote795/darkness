@@ -50,6 +50,11 @@ a {
     color: $theme-link !important;
 }
 
+// Close buttons
+.close-button {
+    background-color: transparent !important;
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Toolbar
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -61,16 +66,38 @@ a {
     color: $theme-text !important;
 }
 
-//links on top right of bar
+// "This repository"
+.header .header-search-scope {
+	color: rgba(0,0,0,0.7) !important;
+	border-right-color: #ddd !important;
+}
+
+// Search bar
+.header input[type="text"].header-search-input {
+	background: #cbc9c8 !important;
+}
+.header input[type="text"].header-search-input::-webkit-input-placeholder {
+	color: #444 !important;
+	
+}
+
+// Links on top right of bar
 #user-links > li > a {
     color: $theme-textbox-text !important;
-    @include invert-back();
-    img {
-        -webkit-filter: none !important;
-    }
-    .dropdown-caret {
-        @include invert-back();
-    }
+    svg {
+		@include invert-back();
+	}
+	// Tooltips like notifications
+	&.tooltipped-s::after {
+		-webkit-filter: invert(100%) !important;
+	}
+	&.tooltipped-n::after {
+		-webkit-filter: invert(100%) !important;
+	}
+}
+.header-nav-link:hover .dropdown-caret,
+.header-nav-link:focus .dropdown-caret {
+	border-top-color: #000 !important;
 }
 
 //dropdowns
@@ -300,6 +327,19 @@ rect[fill="#eeeeee"], .legend > li:nth-child(1){
     background-color: invert-back-color(#eeeeee) !important;
 }
 
+// Remove background color
+.profile-timeline-card-footer > a.muted-link {
+    background: transparent !important;
+}
+button.muted-link {
+    background-color: transparent !important;
+}
+
+// Remove background on dropdown
+.contributions-setting .contributions-setting-link {
+    background: transparent !important;
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Repo Main Page 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -343,6 +383,10 @@ rect[fill="#eeeeee"], .legend > li:nth-child(1){
         background: $theme-background !important;
         color: $theme-text !important;
     }
+}
+
+.branch-infobar a.muted-link {
+    background: transparent !important;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -416,7 +460,7 @@ rect[fill="#eeeeee"], .legend > li:nth-child(1){
     background: $theme-background-toolbar !important;
     svg {
         -webkit-filter: none !important;
-        background: $theme-background !important;
+        background: transparent !important;
         color: $theme-text !important;
     }
 }
@@ -439,6 +483,10 @@ rect[fill="#eeeeee"], .legend > li:nth-child(1){
         background: $theme-background !important;
         color: $theme-text !important;
     }
+}
+
+.thread-subscription-status {
+    background-color: transparent !important;
 }
 
 //subcribe color 
@@ -646,12 +694,37 @@ rect[fill="#eeeeee"], .legend > li:nth-child(1){
     }
 }
 
+button.flash-close {
+    background-color: transparent !important;
+}
+button.flash-close svg {
+    color: $theme-button-background !important;
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Misc
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // "Learn Git and GitHub without any code!" message on the homepage
 .intro-shelf, .intro-shelf .shelf-lead {
     color: $theme-text !important;
+}
+
+// Removing background on some images
+.toolbar-group > button svg,
+.menu-target svg,
+.reponav-item svg,
+nav > a:visited svg,
+a.btn-link > svg,
+svg.octicon.octicon-code,
+svg.octicon.octicon-clippy,
+svg.octicon.octicon-check {
+    background: transparent !important;
+}
+
+// Fix for the broadcast on front-page
+.octofication .broadcast-icon-mask {
+    background-color: transparent !important;
+    background: transparent !important;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
