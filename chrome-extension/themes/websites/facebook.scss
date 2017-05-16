@@ -692,7 +692,7 @@ div[aria-label*="sticker"] {
 
 // Green "online" status dot - in chat windows
 .minimized ._3olv._2nlt{
-	-webkit-filter: invert(0%) !important;
+	// -webkit-filter: invert(0%) !important;
 }
 ._2nlt, ._3olv._2nlt {
 	@include invert-back();
@@ -703,6 +703,19 @@ div[aria-label*="sticker"] {
 	border-radius: 50% !important; // Otherwise earth looks aliased
 }
 
+// "Your post"-chat-box
+.fbNubFlyoutTitlebar {
+	border-color: $theme-border !important;
+	background-color: $theme-background-toolbar !important;
+}
+
+// New messages
+.highlightTitle .fbNubButton {
+	background-color: $theme-highlighted-darker !important;
+}
+._5ugg {
+	background-color: $theme-notices !important;
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Lightboxes (photos, posts, etc.)
@@ -1124,4 +1137,17 @@ i._lew {
 
 ._1kf_ ._1yst {
 	background-color: rgba(255,255,255,.6) !important;
+}
+
+// Pointer to display what type of post is being made
+#pagelet_composer span._4-h8 {
+	border-color: transparent !important;
+}
+span._4-h8::after {
+	border-bottom: 8px solid $theme-background-box !important;
+}
+
+// Links at the top of notification overview
+._1sdi {
+	background-color: transparent !important;
 }

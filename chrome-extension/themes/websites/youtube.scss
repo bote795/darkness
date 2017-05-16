@@ -241,6 +241,14 @@ a.yt-uix-button-epic-nav-item:hover {
 	background-color: $theme-button-background !important;
 }
 
+// "Remove from playlist"-button
+.pl-video-edit-options > button {
+	background-color: $theme-button-background !important;
+}
+.pl-video-edit-options > button:before {
+	-webkit-filter: invert(1) !important;
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Video page
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -458,6 +466,16 @@ a.yt-uix-button-epic-nav-item:hover {
 // Grid of videos after playback ends: hover over a single video
 .videowall-still-info-bg {
 	background: rgba(255, 255, 255, 0.86) !important;
+}
+
+// Previewing lang videos
+.ytp-storyboard,
+.ytp-storyboard-framepreview {
+	-webkit-filter: invert(1) !important;
+}
+
+.ytp-player-content .ytp-sb-text {
+	-webkit-filter: invert(1) !important;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

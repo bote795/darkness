@@ -199,6 +199,11 @@ chrome.runtime.onMessage.addListener(
 					sendResponse(assets);
 				});
 				return true; // Don't call sendResponse automatically - tell Chrome we wish to call it later (async)
+			case 'getPromo':
+				// Get the promo settings
+				var promo = Promo.get(request.spot);
+				sendResponse(promo);
+				return false;
 
 				// ===== Payments =====
 
@@ -482,12 +487,12 @@ var loadAllAssetsToCache = function(debug, callback) {
 // Initialize Darkness' configuration
 var initializeConfiguration = function() {
 	// Chrome runtime configuration setup
-	chrome.runtime.setUninstallURL("http://improvver.com/darkness/extension/uninstalled");
+	chrome.runtime.setUninstallURL("http://lifehacklabs.org/darkness/extension/uninstalled");
 
 	chrome.runtime.onInstalled.addListener(function(details) {
 		log("Chrome invoked onInstalled: ", details);
 		if (details && details.reason == "install") {
-			chrome.tabs.create({ url: "http://improvver.com/darkness/extension/thank-you" }, function(tab) {
+			chrome.tabs.create({ url: "http://lifehacklabs.org/darkness/extension/thank-you" }, function(tab) {
 				log("Thank you page opened");
 			});
 		}

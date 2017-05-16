@@ -113,6 +113,10 @@ iframe {
 	-webkit-filter: invert(1) !important;
 	box-shadow: 0 0 5px #aaa;
 }
+// Inserted images
+.kix-embeddedobject-image {
+	-webkit-filter: invert(0) !important;
+}
 
 // Colorpicker
 .jfk-palette-colorswatch {
@@ -163,6 +167,49 @@ div.input-box[aria-hidden="false"] {
 	-webkit-filter: invert(1) !important;
 }
 .goog-color-menu-button-indicator > div {
+	-webkit-filter: invert(1) !important;
+}
+
+// conditional formatting
+// red
+.waffle-conditionalformat-format-preview[style*='background-color: rgb(183, 225, 205)'],
+.waffle-conditionalformat-default-style-button[style*='background-color: rgb(183, 225, 205)'] {
+	background-color: invert-back-color(rgb(183, 225, 205)) !important;
+}
+.waffle-conditionalformat-format-preview[style*='rgb(11, 128, 67)'],
+.waffle-conditionalformat-default-style-button[style*='rgb(11, 128, 67)'] {
+	color: invert-back-color(rgb(11, 128, 67)) !important;
+}
+// yellow
+.waffle-conditionalformat-format-preview[style*='background-color: rgb(252, 232, 178)'],
+.waffle-conditionalformat-default-style-button[style*='background-color: rgb(252, 232, 178)'] {
+	background-color: invert-back-color(rgb(252, 232, 178)) !important;
+}
+.waffle-conditionalformat-format-preview[style*='color: rgb(240, 147, 0)'],
+.waffle-conditionalformat-default-style-button[style*='color: rgb(240, 147, 0)'] {
+	color: invert-back-color(rgb(240, 147, 0)) !important;
+}
+// green
+.waffle-conditionalformat-format-preview[style*='background-color: rgb(244, 199, 195)'], 
+.waffle-conditionalformat-default-style-button[style*='background-color: rgb(244, 199, 195)'] {
+	background-color: invert-back-color(rgb(244, 199, 195)) !important;
+}
+.waffle-conditionalformat-format-preview[style*='color: rgb(197, 57, 41)'], 
+.waffle-conditionalformat-default-style-button[style*='color: rgb(197, 57, 41)'] {
+	color: invert-back-color(rgb(197, 57, 41)) !important;
+}
+
+// Collab
+.waffle-collab-presence {
+	-webkit-filter: invert(1) !important;
+}
+.cell-border[style*='top: -1px;'],
+.cell-border[style*='left: -1px;'] {
+	-webkit-filter: invert(1) !important;
+}
+div.selection-border,
+div.active-cell-border,
+.autofill-handle {
 	-webkit-filter: invert(1) !important;
 }
 

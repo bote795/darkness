@@ -54,6 +54,11 @@ body[data-drk-site="gmail"] {
 		top: 15px !important;
 	}
 }
+body[data-drk-site="google"].hp {
+	div.drk_settings_icon {
+		top: 17px !important;
+	}
+}
 
 body[data-drk-site="cloudflare"] {
 	nav.header-navigation {
@@ -66,9 +71,41 @@ body[data-drk-site="cloudflare"] {
 body[data-drk-site="google"] {
 	div.drk_settings_icon {
 		position: absolute !important;
-		top: 27px !important;
+		top: 29px !important;
 	}
-	
+}
+body[data-drk-site="quora"] {
+	div.drk_settings_icon {		
+		top: 12px !important;
+		right: 10px !important;
+	}
+}
+body[data-drk-site="jsfiddle"] {
+	#actions .right {
+		margin-right: 47px !important;
+	}
+	div.drk_settings_icon {		
+		top: 12px !important;
+		right: 12px !important;
+	}
+}
+body[data-drk-site="wikipedia"] {
+	#p-personal {
+		margin-right: 40px !important;
+	}
+	div.drk_settings_icon {
+		top: 6px !important;
+		right: 12px !important;
+	}
+}
+body[data-drk-site="googledrive"] {
+	.gb_rc {
+	  padding-right: 38px;
+	}
+	div.drk_settings_icon {
+		top: 17px !important;
+		right: 12px !important;
+	}
 }
 body[data-drk-site="bitbucket"] {
 	div.drk_settings_icon {
@@ -213,6 +250,18 @@ body[data-drk-site="trello"] {
 		position: fixed !important;
 		top: 5px !important;
 		right: 6px !important;
+	}
+}
+
+body[data-drk-site="w3schools"] {
+	div.drk_settings_icon {
+		top: 7px !important;
+	}
+	.w3-navbar > .w3-right {
+		margin-right: 48px !important;
+	}
+	.w3-navbar > .w3-right ~ .w3-right {
+		margin-right: 0px !important;
 	}
 }
 

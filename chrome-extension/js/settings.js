@@ -290,7 +290,7 @@ if (!DarknessSettingsLoader) {
 						}, 2500);
 					} else {
 						$dialog.find('.drk_promo_submit').val('Send');
-						var msg = "Error sending promo to server:\n\n" + res.error + "\n\nPlease copy this message and send it to darkness@improvver.com";
+						var msg = "Error sending promo to server:\n\n" + res.error + "\n\nPlease copy this message and send it to support@lifehacklabs.org";
 						alert(msg);
 					}
 				}
@@ -506,12 +506,24 @@ if (!DarknessSettingsLoader) {
 				$('.drk_cross_promo_btn').addClass('hidden'); // Hide cross promotion
 				$('.drk_rate_btn').addClass('hidden'); // Hide rate on CWS
 			}
-			else if (ASSETS.TYPE == 'p') { 
-				// Pro users:
-				$('.drk_upgrade_btn').remove(); // Hide upgrade button
-			} else { 
-				// Regular users
-				$('.drk_rate_btn').addClass('hidden'); // Hide rate on CWS
+			else {				
+				chrome.runtime.sendMessage({ action: 'getPromo', spot: 'darkness-settings-dialog' }, function(promo){
+					if (promo) {
+						$('.drk_cross_promo_btn').removeClass('hidden');
+						$('.drk_cross_promo_btn span').html(promo.title);
+					} else {
+						$('.drk_cross_promo_btn').addClass('hidden');
+						$('.drk_cross_promo_btn span').html('');
+					}
+				});
+				
+				if (ASSETS.TYPE == 'p') { 
+					// Pro users:
+					$('.drk_upgrade_btn').remove(); // Hide upgrade button
+				} else { 
+					// Regular users
+					$('.drk_rate_btn').addClass('hidden'); // Hide rate on CWS
+				}
 			}
 
 			// Fill website name, etc.
@@ -630,7 +642,7 @@ if (!DarknessSettingsLoader) {
 			// Send skin bug report button
 			$('.drk_settings .drk_bug_report_btn').unbind('click').click(function() {
 				repEventByUser('user-action', 'bug-report-btn-click');
-				var to = 'Darkness Support <darkness@improvver.com>';
+				var to = 'Lifehack Labs Support <support@lifehacklabs.org>';
 				var subj = 'Darkness Bug Report';
 				var body = '[Please send your bug report in English]\n\n________\nSystem Information:\nDarkness Version: ' +
 					chrome.runtime.getManifest().version +
@@ -646,7 +658,7 @@ if (!DarknessSettingsLoader) {
 			// Send feedback button
 			$('.drk_settings .drk_feedback_btn').unbind('click').click(function(e) {
 				repEventByUser('user-action', 'feedback-btn-click');
-				var to = 'Darkness Support <darkness@improvver.com>';
+				var to = 'Lifehack Labs Support <support@lifehacklabs.org>';
 				var subj = 'Darkness Feedback';
 				if (e.altKey) {
 					subj = 'Darkness System Report';
@@ -676,10 +688,13 @@ if (!DarknessSettingsLoader) {
 
 			// Cross promotion button
 			$('.drk_settings .drk_cross_promo_btn').unbind('click').click(function() {
-				repEventByUser('user-action', 'cross-promo-btn-click');
-				var url = 'https://goo.gl/Natio5';
-				var win = window.open(url, '_blank');
-				win.focus();
+				chrome.runtime.sendMessage({ action: 'getPromo', spot: 'darkness-settings-dialog' }, function(promo){
+					if (promo && promo.url) {
+						repEventByUser('user-action', 'cross-promo-btn-click');
+						var win = window.open(promo.url, '_blank');
+						win.focus();
+					}
+				});
 			});
 
 			// Vote button
@@ -832,7 +847,7 @@ if (!DarknessSettingsLoader) {
 					buyClick();
 				} else {
 					// PayPal AND Google failed? Send a support email
-					var to = 'Darkness Support <darkness@improvver.com>';
+					var to = 'Lifehack Labs Support <support@lifehacklabs.org>';
 					var paymentMethodName = PAYMENT_PLATFORM == 'paypal' ? 'PayPal' : 'Google Payment';
 					var subj = 'Problem paying with ' + paymentMethodName;
 					var body =

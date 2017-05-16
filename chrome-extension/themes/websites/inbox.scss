@@ -27,7 +27,7 @@ input {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Toolbar areas
-.hn.b4 {
+.hn.b4, .bB {
 	background: $theme-background-toolbar !important;
 }
 // When accessing "done" mails, the toolbar changes class and color
@@ -46,7 +46,7 @@ input {
 // The app-drawer
 .gb_ga {
 	-webkit-filter: invert(0%) !important;
-	background-color: $theme-background-box !important;
+	background-color: transparent !important;
 }
 // Reverts the different google-logos
 .gb_3, .gb_M {
@@ -73,6 +73,9 @@ input {
 // Changes the color of icons to a visible one
 .gN, .du > img, .iG > .Kc > img, .iK > li > img, .g-aq-al > img, .bG > img, .qY, .e6 > img, .tD > img,.b6 > img {
 	-webkit-filter: invert(0%) !important;
+}
+.iK > li.itemIconPinned > img {
+	-webkit-filter: invert(100%) !important;
 }
 // breaker between text formatting icons
 .g-W-Cw{
@@ -118,15 +121,19 @@ img.ld.mm{
 	background-color: $theme-background-toolbar !important;
 }
 // Button on the left of the search field
-.b4 .at::before, .cb .at::before {
+.b4 .at::before, .cb .at::before, .bB .at::before {
 	box-shadow: inset 0px 0 0px 0px $theme-button-background !important;
 }
 // Button on the right of the search field
 .b2, .gH {
 	background-color: $theme-secondary-button-background !important;
 }
-.rj, .k5 {
+.rj, .k5, .sc.qW, div[role="search"] input {
 	background: $theme-background-box !important;
+}
+// Placeholder text
+input.gc::-webkit-input-placeholder {
+	color: $theme-text !important;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
